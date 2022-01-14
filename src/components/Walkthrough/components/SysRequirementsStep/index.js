@@ -15,12 +15,9 @@ import * as rTypes from "./constants";
 import * as TEST_STATES from "./constants/testStates";
 
 import { useUserAgent } from "../../../../hooks";
-
 const DEBUG = true;
-
 const stServer = {
 	name: "LibreSpeed Backend",
-	// eslint-disable-next-line no-undef
 	server: process.env.REACT_APP_SPEED_TEST_SERVICE_URL || "",
 	dlURL: "garbage.php",
 	ulURL: "empty.php",
@@ -38,22 +35,17 @@ const SysRequirementsStep = ({
 }) => {
 	const [state, setstate] = useState(TEST_STATES.PROMPT);
 	const { os, browser } = useUserAgent();
-
 	const speedTestClient = useRef(new Speedtest());
 	const [stState, setSTState] = useState(speedTestResults.validated ? 4 : 0);
 	const [speedTestData, setSpeedTestData] = useState(speedTestResults.data);
-
 	const [validations, setValidations] = useState({
 		os: isOSSupported(os.name, os.version) ? true : false,
 		browser: isBrowserSupported(browser.name, browser.version) ? true : false,
 		connection: false,
 	});
-
 	const speedTestInit = () => {
 		console.info("Speed Test init");
-		// speedTestClient.current.onupdate = data => setSpeedTestData(data)
 		speedTestClient.current.onupdate = (data) => {
-			// console.table(data)
 			setSpeedTestData(data);
 		};
 		speedTestClient.current.onend = (aborted) => {
@@ -64,30 +56,21 @@ const SysRequirementsStep = ({
 			}
 			setSTState(speedTestClient.current.getState());
 		};
-
 		speedTestClient.current.addTestPoint(stServer);
-		// console.log( speedTestClient.current.getState() )
-		// speedTestClientTgr()
 		setSTState(speedTestClient.current.getState());
 	};
 	const speedTestServersSetup = () => {
 		console.info("Speed Test servers setup");
-		// speedTestClient.current.addTestPoint(stServer)
 		speedTestClient.current.setSelectedServer(stServer);
-		// console.log( speedTestClient.current.getState() );
-		// speedTestClientTgr()
 		setSTState(speedTestClient.current.getState());
 	};
 	const speedTestStart = () => {
 		console.info("Speed Test starting");
 		speedTestClient.current.start();
-		// console.log( speedTestClient.current.getState() );
-		// speedTestClientTgr();
 		setSTState(speedTestClient.current.getState());
 	};
 	const speedTestRunning = () => {
 		console.info("Speed Test running");
-		// console.log( speedTestClient.current.getState() )
 	};
 	const speedTestDone = useCallback(() => {
 		console.info("Speed Test done");
@@ -102,10 +85,8 @@ const SysRequirementsStep = ({
 		});
 		console.log(speedTestClient.current.getState());
 	}, [handleSpeedTestResults, speedTestData, validations]);
-
 	useEffect(() => {
 		if (speedTestResults.validated) return;
-
 		switch (stState) {
 			case 0:
 				DEBUG && console.info("Speed test @ prompt state");
@@ -127,7 +108,6 @@ const SysRequirementsStep = ({
 				break;
 		}
 	}, [stState, speedTestResults, speedTestDone]);
-
 	const computedRequirements = [
 		!validations.os
 			? {
@@ -153,18 +133,14 @@ const SysRequirementsStep = ({
 			  }
 			: null,
 	].filter((e) => e != null);
-
 	const handleStartTest = () => {
-		// eslint-disable-next-line no-undef
 		console.log(process.env.REACT_APP_SPEED_TEST_SERVICE_URL);
 		speedTestInit();
 		setstate(TEST_STATES.RUNNING);
 	};
-
 	return (
 		<SysRequirementsStepView
 			classes={classes}
-			//
 			os={os.name}
 			state={state}
 			version={os.version}
@@ -176,11 +152,9 @@ const SysRequirementsStep = ({
 		/>
 	);
 };
-
 SysRequirementsStep.propTypes = {
 	classes: PropTypes.object,
 	speedTestResults: PropTypes.object,
 	handleSpeedTestResults: PropTypes.func,
 };
-
 export default SysRequirementsStep;

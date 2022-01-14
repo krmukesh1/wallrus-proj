@@ -10,23 +10,13 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import UXButton from "../../../theme/components/UXButton";
-
-// TODO : Save for later
-// import AndroidIcon from '@material-ui/icons/Android';
-// import ImageIcon from '@material-ui/icons/Image';
-// import WorkIcon from '@material-ui/icons/Work';
-// import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-
 import AppleIcon from "@material-ui/icons/Apple";
 import WebIcon from "@material-ui/icons/Web";
-// import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import NetworkCheckIcon from "@material-ui/icons/NetworkCheck";
-
 import PublishIcon from "@material-ui/icons/Publish";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import WifiTetheringIcon from "@material-ui/icons/WifiTethering";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
-
 import * as TEST_STATES from "./constants/testStates";
 
 const RecommendationsDetailView = ({ recommendation }) => (
@@ -119,7 +109,6 @@ const RequirementsListView = ({
 					<WebIcon />
 				</Avatar>
 			</ListItemAvatar>
-			{/* <ListItemText primary="Internet Browser" secondary="Chrome Blink 91 for iOS" /> */}
 			<ListItemText
 				primary="Internet Browser"
 				style={{ color: "#fff" }}

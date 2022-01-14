@@ -1,11 +1,4 @@
-/* eslint-disable no-constant-condition */
-/* eslint-disable brace-style */
-/* eslint-disable no-const-assign */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/media-has-caption */
-/* eslint-disable prettier/prettier */
 import React from "react";
 import PropTypes from "prop-types";
 import Fade from "@material-ui/core/Fade";
@@ -13,74 +6,30 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import UXButton from "../../../theme/components/UXButton";
-import { useRef, useEffect } from 'react';
+import useCameraPermission from "../../../../hooks/useCameraPermission";
 const PermissionsStepView = ({
 	classes,
 	permissionsGranted,
 	handlePermissionsGranted,
-	handleNoButton,
 }) => {
-	const [open, setOpen] = React.useState(false);
-	const [openError, setOpenError] = React.useState(false);
-	const [openPedastal, setopenPedastal] = React.useState(true);
-	const[stream,setStream] = React.useState()
-	const videoRef = useRef(null);
-	const[camera, setCamera] = React.useState(false)
-	const[disable,setDisable] = React.useState(true)
-	useEffect(() => {
-		const getUserMedia =  async() => {
-			try {
-				let stream = await navigator.mediaDevices.getUserMedia({video: true});
-				setStream(stream)
-				videoRef.current.srcObject = stream;
-			  } catch (err) {
-				console.log(err);
-			  }
-		};
-		getUserMedia();
-	  }, [camera]);
-	  function stopVideoOnly() {
-		const tracks = stream.getTracks()
-		console.log(".......................stop")
-			tracks[0].stop()
-			console.log(tracks)
-  
-	}
-	const handleClickOpen = () => {
-		setOpen(true);
-		
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-		setOpenError(true);
-		setopenPedastal(false);
-		handleNoButton(true);
-		
-	};
-	const handleClosemodal = () => {
-		setOpen(false);
-		stopVideoOnly();
-		setDisable(false)
-
-	};
-const cameraHandle = () =>{
-	stopVideoOnly()
-}
-	const TryAgain = () => {
-		setOpenError(false);
-		setopenPedastal(true);
-		handleNoButton(false);
-		setCamera(!camera)
-	};
-
+	const {
+		open,
+		openError,
+		openPedastal,
+		videoRef,
+		disable,
+		handleClickOpen,
+		TryAgain,
+		handleClose,
+		handleClosemodal,
+		cameraHandle,
+	} = useCameraPermission();
 	return (
 		<div className={classes.bigContainer}>
 			{openPedastal && (
@@ -110,7 +59,13 @@ const cameraHandle = () =>{
 								</DialogContentText>
 							</DialogContent>
 							<DialogActions>
-								<Button onClick={(e)=>{handleClose();cameraHandle()}} color="primary">
+								<Button
+									onClick={() => {
+										handleClose();
+										cameraHandle();
+									}}
+									color="primary"
+								>
 									No
 								</Button>
 								<Button
@@ -127,12 +82,11 @@ const cameraHandle = () =>{
 					</div>
 
 					<Grid item container xs={12}>
-						 <Grid item xs={12}>
-							 <UXButton
-							
-								onClick={ ()=>{
-									if(disable) {
-                                        handleClickOpen();
+						<Grid item xs={12}>
+							<UXButton
+								onClick={() => {
+									if (disable) {
+										handleClickOpen();
 									}
 								}}
 								size="large"
@@ -157,14 +111,23 @@ const cameraHandle = () =>{
 									style={{
 										transitionDelay:
 											permissionsGranted === false ? "800ms" : "0ms",
-										// transitionDelay: '800ms',
 									}}
 									unmountOnExit
 								>
-									<div className="direct-video" style={{width:"100% !important"}}>
-									<video style={{width:"100% !important", position:"relative !important"}}  ref={videoRef} autoPlay/>
+									<div
+										className="direct-video"
+										style={{ width: "100% !important" }}
+									>
+										<video
+											style={{
+												width: "100% !important",
+												position: "relative !important",
+											}}
+											ref={videoRef}
+											autoPlay
+										/>
 									</div>
-									 
+
 									{/* <video id="video" width="600px" height="400px" autoPlay></video> */}
 									{/* <CircularProgress size="5rem" /> */}
 								</Fade>
@@ -196,7 +159,13 @@ PermissionsStepView.propTypes = {
 	permissionsGranted: PropTypes.bool,
 	handlePermissionsGranted: PropTypes.func,
 	isNextButtonDisabled: PropTypes.bool,
-	handleNoButton: PropTypes.func, 
+	handleNoButton: PropTypes.func,
+	handleClickOpen: PropTypes.func,
+	TryAgain: PropTypes.func,
+	stopVideoOnly: PropTypes.func,
+	handleClose: PropTypes.func,
+	handleClosemodal: PropTypes.func,
+	cameraHandle: PropTypes.func,
 };
 
 export default PermissionsStepView;

@@ -10,6 +10,7 @@ import usePermissions from "./usePermissions";
 import useUserAgent from "./useUserAgent";
 import useDispatch from "./useDispatch";
 import useTimer from "./useTimer";
+import useCameraPermission from "./useCameraPermission";
 
 export {
 	useDeviceOrientationListener,
@@ -24,4 +25,5 @@ export {
 	useUserAgent,
 	useDispatch,
 	useTimer,
+	useCameraPermission,
 };
