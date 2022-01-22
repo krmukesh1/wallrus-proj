@@ -83,6 +83,9 @@ const SysRequirementsStep = ({
 		let dataset = speedTestClient.current.getState();
 		console.log(dataset);
 	}, [handleSpeedTestResults, speedTestData, validations]);
+	const speedTestError = () => {
+		setstate(TEST_STATES.ERROR);
+	};
 	useEffect(() => {
 		if (speedTestResults.validated) return;
 		switch (stState) {
@@ -100,6 +103,9 @@ const SysRequirementsStep = ({
 				break;
 			case 4:
 				speedTestDone();
+				break;
+			case 5:
+				speedTestError();
 				break;
 			default:
 				console.error(`Uknown speed test state (Got ${stState}).`);
@@ -149,6 +155,8 @@ const SysRequirementsStep = ({
 			recommendations={computedRequirements}
 			startTestCallback={handleStartTest}
 			doneTestCallback={speedTestDone}
+			errorTestCallback={speedTestError}
+			validations={validations}
 		/>
 	);
 };

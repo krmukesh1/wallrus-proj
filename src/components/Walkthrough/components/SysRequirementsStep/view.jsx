@@ -213,6 +213,7 @@ const SysRequirementsStepView = ({
 	recommendations,
 	startTestCallback,
 	state,
+	validations,
 }) => (
 	<div className={classes.bigContainer}>
 		<Paper className={classes.paper}>
@@ -251,10 +252,22 @@ const SysRequirementsStepView = ({
 						</div>
 					)}
 				</Container>
-				{state === TEST_STATES.ERROR && (
-					<div className={classes.middleInfo}>
-						<p>Error</p>
+				{state === TEST_STATES.ERROR &&
+				recommendations.length > 5 &&
+				validations ? (
+					<div>
+						<h2 className="text-white font-imperator font-size">
+							YOUR DEVICE IS <br /> NOT POWERFUL <br /> ENOUGH
+						</h2>
+						<div className="line"></div>
+						<p className="p-t-b text-white font-circular">
+							Unfortunately, your device is not powerful enough to sustain a
+							breach. You can still learn more about the Monster World, but you
+							will have to use a newer device to live this experience.
+						</p>
 					</div>
+				) : (
+					false
 				)}
 			</div>
 		</Paper>
@@ -271,6 +284,7 @@ SysRequirementsStepView.propTypes = {
 	recommendations: PropTypes.array,
 	startTestCallback: PropTypes.func,
 	state: PropTypes.string,
+	validations: PropTypes.string,
 };
 
 export default SysRequirementsStepView;
