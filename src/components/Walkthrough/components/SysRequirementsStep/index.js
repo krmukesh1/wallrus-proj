@@ -1,12 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import SysRequirementsStepView from "./view";
-import {
-	// getOS,
-	// getBrowser,
-	isOSSupported,
-	isBrowserSupported,
-} from "./helpers";
+import { isOSSupported, isBrowserSupported } from "./helpers";
 
 import Speedtest from "../../../../services/speedtest";
 
@@ -73,7 +68,9 @@ const SysRequirementsStep = ({
 		console.info("Speed Test running");
 	};
 	const speedTestDone = useCallback(() => {
+		alert("Device is Ok");
 		console.info("Speed Test done");
+		setstate(TEST_STATES.DONE);
 		handleSpeedTestResults({ validated: true, data: speedTestData });
 		setValidations({
 			...validations,
@@ -83,7 +80,8 @@ const SysRequirementsStep = ({
 					? true
 					: false,
 		});
-		console.log(speedTestClient.current.getState());
+		let dataset = speedTestClient.current.getState();
+		console.log(dataset);
 	}, [handleSpeedTestResults, speedTestData, validations]);
 	useEffect(() => {
 		if (speedTestResults.validated) return;
@@ -138,6 +136,7 @@ const SysRequirementsStep = ({
 		speedTestInit();
 		setstate(TEST_STATES.RUNNING);
 	};
+
 	return (
 		<SysRequirementsStepView
 			classes={classes}
@@ -149,6 +148,7 @@ const SysRequirementsStep = ({
 			speedTestData={speedTestData}
 			recommendations={computedRequirements}
 			startTestCallback={handleStartTest}
+			doneTestCallback={speedTestDone}
 		/>
 	);
 };

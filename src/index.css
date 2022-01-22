@@ -168,6 +168,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   align-items: center;
   padding: 50px 0;
   margin: auto;
+  display: flex;
 }
 .background-images .MuiPaper-root {
   background: transparent !important;
@@ -249,4 +250,19 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   cursor: pointer !important;
 }
 
+.dl-none
+{
+  display: none !important;
+}
 
+.list-internet
+{
+  display: block !important;
+    text-align: center  !important;
+    margin: 0 auto !important;
+}
+
+.iconSize svg {
+  font-size: 11rem;
+  color: #fff;
+}

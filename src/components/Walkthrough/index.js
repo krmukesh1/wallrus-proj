@@ -18,6 +18,7 @@ const getSteps = () => {
 		"Permissions",
 		"Pedestal Setup",
 		"Done",
+		// "Story",
 	];
 };
 

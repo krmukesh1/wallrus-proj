@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import netwrok from "../../../../assets/images/Network.png";
+import positive from "../../../../assets/images/positive-vote.png";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
@@ -9,15 +10,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
-import UXButton from "../../../theme/components/UXButton";
 import AppleIcon from "@material-ui/icons/Apple";
 import WebIcon from "@material-ui/icons/Web";
-import NetworkCheckIcon from "@material-ui/icons/NetworkCheck";
 import PublishIcon from "@material-ui/icons/Publish";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import WifiTetheringIcon from "@material-ui/icons/WifiTethering";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
 import * as TEST_STATES from "./constants/testStates";
+import { useEffect } from "react";
 
 const RecommendationsDetailView = ({ recommendation }) => (
 	<>
@@ -62,24 +62,20 @@ SpeedTestDataView.propTypes = {
 	data: PropTypes.object,
 };
 
-const SpeedTestView = ({ classes, data }) => (
+const SpeedTestView = () => (
 	<>
-		<ListItemAvatar>
-			<Avatar className={classes.warning}>
-				<NetworkCheckIcon />
-			</Avatar>
+		<ListItemAvatar className="iconSize">
+			<img className="img-testing" src={netwrok} alt="network" />
 		</ListItemAvatar>
-
-		<ListItemText
-			style={{ color: "#fff" }}
-			primary="Internet Connection"
-			secondary={<SpeedTestDataView data={data} />}
-		/>
 	</>
 );
 SpeedTestView.propTypes = {
 	classes: PropTypes.object,
 	data: PropTypes.object,
+	speedTestData: PropTypes.object,
+	DeviceOK: PropTypes.object,
+	setSTState: PropTypes.func,
+	dataset: PropTypes.bool,
 };
 
 const RequirementsListView = ({
@@ -91,7 +87,7 @@ const RequirementsListView = ({
 	speedTestData,
 }) => (
 	<List className={classes.requirementsList}>
-		<ListItem>
+		<ListItem className="dl-none">
 			<ListItemAvatar>
 				<Avatar className={classes.success}>
 					<AppleIcon />
@@ -103,7 +99,7 @@ const RequirementsListView = ({
 				secondary={`${os} ${version}`}
 			/>
 		</ListItem>
-		<ListItem>
+		<ListItem className="dl-none">
 			<ListItemAvatar>
 				<Avatar className={classes.success}>
 					<WebIcon />
@@ -116,7 +112,7 @@ const RequirementsListView = ({
 			/>
 		</ListItem>
 
-		<ListItem>
+		<ListItem className="list-internet">
 			<SpeedTestView
 				style={{ color: "#fff" }}
 				classes={classes}
@@ -125,6 +121,7 @@ const RequirementsListView = ({
 		</ListItem>
 	</List>
 );
+
 RequirementsListView.propTypes = {
 	classes: PropTypes.object,
 	os: PropTypes.string,
@@ -143,9 +140,6 @@ const RunningView = ({
 	speedTestData,
 }) => (
 	<>
-		<Typography variant="body1" style={{ color: "#fff" }} gutterBottom>
-			Test has started. Please wait
-		</Typography>
 		<RequirementsListView
 			classes={classes}
 			os={os}
@@ -164,40 +158,45 @@ RunningView.propTypes = {
 	browserVersion: PropTypes.object,
 	speedTestData: PropTypes.object,
 };
-
-const PromptView = ({ classes, onClickCallback }) => (
+const DeviceOK = ({ speeddone }) => (
 	<>
-		<Typography
-			variant="body1"
-			style={{
-				color: "#fff",
-				fontFamily: "CircularAir-Light",
-				padding: "10px",
-				fontSize: "1rem",
-			}}
-			gutterBottom={true}
-		>
-			{`Please wait while we validate your device's capabilities.`}
+		<Typography variant="body1" style={{ color: "#fff" }} gutterBottom>
+			Device is ok
 		</Typography>
-		<UXButton
-			onClick={() => onClickCallback()}
-			size="large"
-			className={`${classes.actionButtom} ${classes.startTestButton} ${classes.startbtn}`}
-		>
-			Start Test
-		</UXButton>
-		{/* <Button
-      className={`${classes.actionButtom} ${classes.startTestButton}`}
-      variant="contained"
-      color="primary"
-      onClick={() => onClickCallback()}
-      size="large"
-      fullWidth
-    >
-      Start Test
-    </Button> */}
+		<p>Ok:{speeddone}</p>
 	</>
 );
+DeviceOK.propTypes = {
+	speeddone: PropTypes.func,
+};
+function PromptView({ onClickCallback }) {
+	useEffect(() => {
+		onClickCallback();
+	});
+	return (
+		<>
+			<Typography
+				variant="body1"
+				style={{
+					color: "#fff",
+					fontFamily: "CircularAir-Light",
+					padding: "10px",
+					fontSize: "1rem",
+				}}
+				gutterBottom={true}
+			>
+				{`This test will let us determine if your device is powerful enough to a sustain a breach to the Monster World. it will only take a minute.`}
+			</Typography>
+			{/* <UXButton
+				onClick={() => onClickCallback()}
+				size="large"
+				className={`${classes.actionButtom} ${classes.startTestButton} ${classes.startbtn}`}
+			>
+				Start Test
+			</UXButton> */}
+		</>
+	);
+}
 PromptView.propTypes = {
 	classes: PropTypes.object,
 	onClickCallback: PropTypes.func,
@@ -229,7 +228,7 @@ const SysRequirementsStepView = ({
 						}}
 						gutterBottom
 					>
-						System Requirements Checkup
+						Testing Your <br /> Device
 					</Typography>
 					<div className="line"></div>
 					{state === TEST_STATES.PROMPT && (
@@ -245,23 +244,18 @@ const SysRequirementsStepView = ({
 							speedTestData={speedTestData}
 						/>
 					)}
+					{state === TEST_STATES.DONE && recommendations.length > 0 && (
+						<div className={classes.middleInfo}>
+							<img src={positive} alt="" className="img-testing" />
+						</div>
+					)}
 				</Container>
+				{state === TEST_STATES.ERROR && (
+					<div className={classes.middleInfo}>
+						<p>Error</p>
+					</div>
+				)}
 			</div>
-			{state === TEST_STATES.DONE && recommendations.length > 0 && (
-				<div className={classes.middleInfo}>
-					<Typography
-						variant="subtitle1"
-						style={{ fontWeight: "bold" }}
-						gutterBottom
-					>
-						Recommendations
-					</Typography>
-					{recommendations &&
-						recommendations.map((r, i) => (
-							<RecommendationsDetailView key={i} recommendation={r} />
-						))}
-				</div>
-			)}
 		</Paper>
 	</div>
 );

@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -127,9 +126,6 @@ const PermissionsStepView = ({
 											autoPlay
 										/>
 									</div>
-
-									{/* <video id="video" width="600px" height="400px" autoPlay></video> */}
-									{/* <CircularProgress size="5rem" /> */}
 								</Fade>
 							)}
 						</Grid>

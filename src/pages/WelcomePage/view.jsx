@@ -11,8 +11,8 @@ import styles from "../../components/theme/styles";
 const WelcomePageView = ({
 	children,
 	classes,
-
-	openGetStartedDialog,
+	openDialog,
+	// openGetStartedDialog,
 }) => {
 	return (
 		<>
@@ -32,9 +32,9 @@ const WelcomePageView = ({
 							<InfoBoxFullWidth
 								title={"Welcome to Wallrus"}
 								button1Label={"ABOUT THE MONSTERS WORLD"}
-								// button1Callback={() => openDialog()}
+								button1Callback={() => openDialog()}
 								button2Label={"START THE EXPERIENCE"}
-								button2Callback={() => openGetStartedDialog()}
+								// button2Callback={() => openGetStartedDialog()}
 								className="custom-info-box"
 							>
 								<h2 className="home-text">THE SECRET LIFE OF MONSTERS</h2>
@@ -58,8 +58,8 @@ const WelcomePageView = ({
 WelcomePageView.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 	classes: PropTypes.object,
-	// openDialog: PropTypes.func,
-	openGetStartedDialog: PropTypes.func,
+	openDialog: PropTypes.func,
+	// openGetStartedDialog: PropTypes.func,
 };
 
 export default withStyles(styles)(WelcomePageView);

@@ -20,6 +20,7 @@ import {
 	SignInStep,
 	PermissionsStep,
 	PedestalSetupStep,
+	// Story,
 } from "./components";
 
 const WalkthroughView = ({
@@ -63,18 +64,18 @@ const WalkthroughView = ({
 								<div className={classes.stepContainer}>
 									<div className={classes.bigContainer}>
 										{/* <Stepper
-                  classes={{ root: classes.stepper }}
-                  activeStep={activeStep}
-                  alternativeLabel
-                >
-                  {steps.map((label) => {
-                    return (
-                      <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
-                      </Step>
-                    );
-                  })}
-                </Stepper> */}
+											classes={{ root: classes.stepper }}
+											activeStep={activeStep}
+											alternativeLabel
+										>
+											{steps.map((label) => {
+												return (
+													<Step key={label}>
+														<StepLabel>{label}</StepLabel>
+													</Step>
+												);
+											})}
+										</Stepper> */}
 									</div>
 
 									{activeStep === 0 && (
@@ -123,6 +124,7 @@ const WalkthroughView = ({
 										/>
 									)}
 
+									{/* {activeStep === 8 && <Story />} */}
 									<div className={classes.flexBar}>
 										{activeStep !== 6 && !noButtonStatus && (
 											<Button

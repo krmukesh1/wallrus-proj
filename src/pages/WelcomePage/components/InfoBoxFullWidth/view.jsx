@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { UXBox, UXPaper } from "../../../../components/theme";
-
+import { Link } from "react-router-dom";
 const InfoBoxFullWidthView = ({
 	classes,
 	title,
@@ -47,6 +47,8 @@ const InfoBoxFullWidthView = ({
 						<Button
 							onClick={() => button1Callback && button1Callback()}
 							variant="outlined"
+							component={Link}
+							to="/story"
 							className={`${classes.actionButtom} ${
 								isMobileWidth ? classes.fullWidth : ""
 							}`}
@@ -56,6 +58,8 @@ const InfoBoxFullWidthView = ({
 						</Button>
 						<Button
 							onClick={() => button2Callback && button2Callback()}
+							component={Link}
+							to="/requirement"
 							color="primary"
 							variant="contained"
 							className={`${classes.actionButtom} ${

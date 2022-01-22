@@ -5,7 +5,8 @@ import Cards from "./components/Cards";
 import SignUpPage from "./pages/SignUpPage";
 import ScrollToTop from "./components/ScrollToTop";
 import Walkthrough from "./components/Walkthrough";
-import { GamePlayerPage, WelcomePage } from "./pages";
+import { GamePlayerPage, Requirement, WelcomePage } from "./pages";
+import { Story } from "./pages";
 
 const Routes = () => (
 	<HashRouter>
@@ -13,6 +14,8 @@ const Routes = () => (
 			<Switch>
 				<Route exact path="/" component={WelcomePage} />
 				<Route exact path="/signup" component={SignUpPage} />
+				<Route exact path="/story" component={Story} />
+				<Route exact path="/requirement" component={Requirement} />
 				<Route exact path="/walkthrough" component={Walkthrough} />
 				<Route exact path="/gameplayer" component={GamePlayerPage} />
 				<Route exact path="/cards" component={Cards} />

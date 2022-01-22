@@ -85,7 +85,6 @@ const getBrowser = () => {
 	}
 };
 
-//const validateVersion = ( userVersion, reqVersion ) => reqVersion.split('.').merge( userVersion.split('.') )
 const validateVersion = (userVersion, reqVersion) =>
 	reqVersion.split(".").reduce((pv, cv, i) => cv <= userVersion.split(".")[i]);
 

@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import "../../../../assets/css/control.css";
-import ControlsImgOne from "../../../../assets/images/controls-1.png";
-import ControlsImgTwo from "../../../../assets/images/controls-2.png";
+import ControlsImgOne from "../../../../assets/images/breach-1.png";
+import ControlsImgTwo from "../../../../assets/images/breach-2.png";
 import UXButton from "../../../theme/components/UXButton";
 
 const SignInStepView = ({ classes, handleNext }) => (
@@ -12,8 +12,7 @@ const SignInStepView = ({ classes, handleNext }) => (
 			<div className="bg-home-3">
 				<div className="p-5">
 					<h2 className="text-white font-imperator font-size">
-						REQUIREMENTS
-						<br />& CONTROLS
+						Opening a Breach
 					</h2>
 					<div className="line"></div>
 					<p className="p-t-b text-white font-circular">
