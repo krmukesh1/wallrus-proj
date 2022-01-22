@@ -266,3 +266,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   font-size: 11rem;
   color: #fff;
 }
+p.deivce-testing{
+  color: #fff;
+  font-size: 16px;
+  padding-top: 20px;
+}

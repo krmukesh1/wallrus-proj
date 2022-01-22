@@ -66,6 +66,7 @@ const SpeedTestView = () => (
 	<>
 		<ListItemAvatar className="iconSize">
 			<img className="img-testing" src={netwrok} alt="network" />
+			<p className="deivce-testing">Your Device is Testing Please Wait...</p>
 		</ListItemAvatar>
 	</>
 );
