@@ -196,6 +196,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   width: 100% !important;
   height: 100% ;
 }
+.next-button {
+  min-width: 380px;
+}
 @media (max-width:767px) {
   .top-images{
     display: none;
@@ -245,7 +248,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   margin: auto;
   border-radius: 30px;
   background-color: #191919;
-  height: 60px;
+  height: 50px;
   text-transform: uppercase;
   cursor: pointer !important;
 }

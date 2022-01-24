@@ -12,6 +12,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import UXButton from "../../../theme/components/UXButton";
 import useCameraPermission from "../../../../hooks/useCameraPermission";
+import { CircularProgress } from "@material-ui/core";
 const PermissionsStepView = ({
 	classes,
 	permissionsGranted,
@@ -21,13 +22,12 @@ const PermissionsStepView = ({
 		open,
 		openError,
 		openPedastal,
-		videoRef,
 		disable,
 		handleClickOpen,
 		TryAgain,
 		handleClose,
 		handleClosemodal,
-		cameraHandle,
+		// cameraHandle,
 	} = useCameraPermission();
 	return (
 		<div className={classes.bigContainer}>
@@ -61,7 +61,7 @@ const PermissionsStepView = ({
 								<Button
 									onClick={() => {
 										handleClose();
-										cameraHandle();
+										// cameraHandle();
 									}}
 									color="primary"
 								>
@@ -113,19 +113,7 @@ const PermissionsStepView = ({
 									}}
 									unmountOnExit
 								>
-									<div
-										className="direct-video"
-										style={{ width: "100% !important" }}
-									>
-										<video
-											style={{
-												width: "100% !important",
-												position: "relative !important",
-											}}
-											ref={videoRef}
-											autoPlay
-										/>
-									</div>
+									<CircularProgress size="5rem" />
 								</Fade>
 							)}
 						</Grid>

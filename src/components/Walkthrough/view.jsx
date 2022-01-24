@@ -127,25 +127,32 @@ const WalkthroughView = ({
 									{/* {activeStep === 8 && <Story />} */}
 									<div className={classes.flexBar}>
 										{activeStep !== 6 && !noButtonStatus && (
-											<Button
-												disabled={activeStep === 0}
-												onClick={handleBack}
-												className={classes.backButton}
-												size="large"
-											>
-												Back
-											</Button>
+											<div className="next-button">
+												<Button
+													disabled={activeStep === 0}
+													onClick={handleBack}
+													className={classes.backButton}
+													size="large"
+												>
+													Back
+												</Button>
+											</div>
 										)}
 										{activeStep !== 2 && activeStep !== 6 && !noButtonStatus && (
-											<Button
-												variant="contained"
-												color="primary"
-												onClick={activeStep !== 6 ? handleNext : goToDashboard}
-												size="large"
-												disabled={isNextButtonDisabled()}
-											>
-												{stepActions()}
-											</Button>
+											<div className="next-button">
+												<Button
+													className={classes.nextButton}
+													variant="contained"
+													color="primary"
+													onClick={
+														activeStep !== 6 ? handleNext : goToDashboard
+													}
+													size="large"
+													disabled={isNextButtonDisabled()}
+												>
+													{stepActions()}
+												</Button>
+											</div>
 										)}
 									</div>
 								</div>
