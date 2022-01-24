@@ -18,6 +18,7 @@ import WifiTetheringIcon from "@material-ui/icons/WifiTethering";
 import SettingsEthernetIcon from "@material-ui/icons/SettingsEthernet";
 import * as TEST_STATES from "./constants/testStates";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const RecommendationsDetailView = ({ recommendation }) => (
 	<>
@@ -131,7 +132,6 @@ RequirementsListView.propTypes = {
 	browserVersion: PropTypes.object,
 	speedTestData: PropTypes.object,
 };
-
 const RunningView = ({
 	classes,
 	os,
@@ -213,7 +213,8 @@ const SysRequirementsStepView = ({
 	recommendations,
 	startTestCallback,
 	state,
-	validations,
+	errorTestCallback,
+	// validations,
 }) => (
 	<div className={classes.bigContainer}>
 		<Paper className={classes.paper}>
@@ -250,11 +251,9 @@ const SysRequirementsStepView = ({
 						<div className={classes.middleInfo}>
 							<img src={positive} alt="" className="img-testing" />
 						</div>
-					)}
+					)}{" "}
 				</Container>
-				{state === TEST_STATES.ERROR &&
-				recommendations.length > 5 &&
-				validations ? (
+				{state === TEST_STATES.ERROR && errorTestCallback && (
 					<div>
 						<h2 className="text-white font-imperator font-size">
 							YOUR DEVICE IS <br /> NOT POWERFUL <br /> ENOUGH
@@ -265,9 +264,12 @@ const SysRequirementsStepView = ({
 							breach. You can still learn more about the Monster World, but you
 							will have to use a newer device to live this experience.
 						</p>
+						<Link to="/walkthrough">
+							<button className="btn-home-1 font-circular mb-30">
+								START THE EXPERIENCE
+							</button>
+						</Link>
 					</div>
-				) : (
-					false
 				)}
 			</div>
 		</Paper>
@@ -285,6 +287,7 @@ SysRequirementsStepView.propTypes = {
 	startTestCallback: PropTypes.func,
 	state: PropTypes.string,
 	validations: PropTypes.string,
+	errorTestCallback: PropTypes.func,
 };
 
 export default SysRequirementsStepView;

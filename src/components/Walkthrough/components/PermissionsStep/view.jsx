@@ -110,7 +110,12 @@ const PermissionsStepView = ({
 									}}
 									unmountOnExit
 								>
-									<CircularProgress size="5rem" />
+									<CircularProgress
+										style={{
+											color: "#fff",
+										}}
+										size="5rem"
+									/>
 								</Fade>
 							)}
 						</Grid>
