@@ -1,17 +1,8 @@
-/* eslint-disable no-dupe-keys */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-
 import Grid from "@material-ui/core/Grid";
-import Step from "@material-ui/core/Step";
 import Button from "@material-ui/core/Button";
-import Stepper from "@material-ui/core/Stepper";
-import StepLabel from "@material-ui/core/StepLabel";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
-// import BackButton from "../BackButton";
 
 import {
 	DoneStep,
@@ -20,13 +11,11 @@ import {
 	SignInStep,
 	PermissionsStep,
 	PedestalSetupStep,
-	// Story,
 } from "./components";
 
 const WalkthroughView = ({
 	classes,
 	activeStep,
-	steps,
 	termsChecked,
 	handleTerms,
 	handleBack,
@@ -59,25 +48,9 @@ const WalkthroughView = ({
 						className={classes.grid}
 					>
 						<Grid item xs={12}>
-							{/* Edit container above to have padding: 0px 40px 40px 40px */}
 							<div className="background-images">
 								<div className={classes.stepContainer}>
-									<div className={classes.bigContainer}>
-										{/* <Stepper
-											classes={{ root: classes.stepper }}
-											activeStep={activeStep}
-											alternativeLabel
-										>
-											{steps.map((label) => {
-												return (
-													<Step key={label}>
-														<StepLabel>{label}</StepLabel>
-													</Step>
-												);
-											})}
-										</Stepper> */}
-									</div>
-
+									<div className={classes.bigContainer}></div>
 									{activeStep === 0 && (
 										<SysRequirementsStep
 											classes={classes}
@@ -124,7 +97,6 @@ const WalkthroughView = ({
 										/>
 									)}
 
-									{/* {activeStep === 8 && <Story />} */}
 									<div className={classes.flexBar}>
 										{activeStep !== 6 && !noButtonStatus && (
 											<div className="next-button">
@@ -181,7 +153,6 @@ WalkthroughView.propTypes = {
 	handleSpeedTestResults: PropTypes.func,
 	isNextButtonDisabled: PropTypes.func,
 	handleBackbtn: PropTypes.func,
-	isNextButtonDisabled: PropTypes.bool,
 	noButtonStatus: PropTypes.bool,
 	handleNoButton: PropTypes.func,
 };

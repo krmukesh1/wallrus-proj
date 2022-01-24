@@ -1,12 +1,8 @@
-// const backgroundShape = require("../../images/shape.svg");
-// import backgroundShape from "../../images/bitmap.png";
-
 const styles = (theme) => ({
 	root: {
 		flexGrow: 1,
 		backgroundColor: theme.palette.primary["A100"],
 		overflow: "hidden",
-		// background: `url(${backgroundShape}) no-repeat`,
 		backgroundSize: "cover",
 		backgroundPosition: "0 400px",
 	},
@@ -85,7 +81,6 @@ const styles = (theme) => ({
 	},
 	requirementsList: {},
 	success: {
-		//color: theme.palette.getContrastText(theme.palette.primary),
 		color: "#fff",
 		backgroundColor: theme.palette.text.primary,
 	},
@@ -136,6 +131,11 @@ const styles = (theme) => ({
 		fontSize: "1.1rem",
 		border: "none",
 		padding: "10px",
+	},
+	"@media (max-width: 760px)": {
+		startbtn: {
+			width: "350px",
+		},
 	},
 });
 export default styles;

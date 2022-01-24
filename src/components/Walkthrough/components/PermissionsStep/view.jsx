@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import React from "react";
 import PropTypes from "prop-types";
 import Fade from "@material-ui/core/Fade";
@@ -27,7 +26,6 @@ const PermissionsStepView = ({
 		TryAgain,
 		handleClose,
 		handleClosemodal,
-		// cameraHandle,
 	} = useCameraPermission();
 	return (
 		<div className={classes.bigContainer}>
@@ -61,7 +59,6 @@ const PermissionsStepView = ({
 								<Button
 									onClick={() => {
 										handleClose();
-										// cameraHandle();
 									}}
 									color="primary"
 								>

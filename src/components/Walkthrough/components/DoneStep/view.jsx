@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-// import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import UXButton from "../../../theme/components/UXButton";
 const DoneStepView = ({ classes, onClick }) => (
@@ -36,16 +35,6 @@ const DoneStepView = ({ classes, onClick }) => (
 				>
 					{`You have now access to see the monster's dimension.`}
 				</Typography>
-				{/* <Button
-						fullWidth
-						variant="outlined"
-						color="primary"
-						size="large"
-						className={classes.startGameButton}
-						onClick={onClick}
-					>
-						Start the game
-					</Button> */}
 				<UXButton
 					onClick={onClick}
 					size="large"

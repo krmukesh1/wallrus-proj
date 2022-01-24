@@ -136,6 +136,19 @@ p.para_lanscape {
   top: -70px;
   pointer-events: none;
 }
+@media (max-width: 767px){
+  .btn-home-1{
+    border-radius: 30px;
+    background-color: #191919;
+    height: 50px;
+    width: 350px;
+    color: #fff;
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+  }
+}
 @media (max-width: 320px)
 {
   p.margin-welcome 

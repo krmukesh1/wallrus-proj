@@ -7,7 +7,6 @@ import { withRouter } from "react-router-dom";
 import styles from "./styles";
 import WalkthroughView from "./view";
 
-// const qs = require("query-string");
 import qs from "query-string";
 
 const getSteps = () => {
@@ -18,7 +17,6 @@ const getSteps = () => {
 		"Permissions",
 		"Pedestal Setup",
 		"Done",
-		// "Story",
 	];
 };
 
@@ -58,9 +56,6 @@ const Walkthrough = ({ classes, ...props }) => {
 	const handleNoButton = (status) => setNoButtonStatus(status);
 
 	const isNextButtonDisabled = () =>
-		// (!DEBUG && activeStep === 0 && !speedTestResults.validated) ||
-
-		// eslint-disable-next-line no-undef
 		(process.env.NODE_ENV === "production" &&
 			activeStep === 0 &&
 			!speedTestResults.validated) ||
@@ -91,15 +86,12 @@ const Walkthrough = ({ classes, ...props }) => {
 	};
 
 	const goToGamePlayerPage = () => {
-		// const queryString = this.props.location.search;
-
 		props.history.push({
 			pathname: "/gameplayer",
-			// search: queryString,
 		});
 	};
 
-	const queryString = "some-string"; // this.props.location.search;
+	const queryString = "some-string";
 
 	return (
 		<WalkthroughView

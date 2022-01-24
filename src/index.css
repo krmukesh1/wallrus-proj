@@ -199,6 +199,19 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
 .next-button {
   min-width: 380px;
 }
+.permissionBtn{
+  color: #fff;
+  width: 90%;
+  border: none;
+  padding: 10px;
+  font-size: 1.1rem;
+  margin: auto;
+  border-radius: 30px;
+  background-color: #191919;
+  height: 50px;
+  text-transform: uppercase;
+  cursor: pointer !important;
+}
 @media (max-width:767px) {
   .top-images{
     display: none;
@@ -237,21 +250,17 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   width: 70% !important;
   height: 100% !important;
 }
+.next-button {
+  min-width: 350px;
+}
+.permissionBtn {
+  color: #fff;
+  width: 100%;
 }
 
-.permissionBtn{
-  color: #fff;
-  width: 90%;
-  border: none;
-  padding: 10px;
-  font-size: 1.1rem;
-  margin: auto;
-  border-radius: 30px;
-  background-color: #191919;
-  height: 50px;
-  text-transform: uppercase;
-  cursor: pointer !important;
 }
+
+
 
 .dl-none
 {
