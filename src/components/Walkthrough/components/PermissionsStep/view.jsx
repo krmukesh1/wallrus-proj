@@ -125,11 +125,12 @@ const PermissionsStepView = ({
 			{openError && (
 				<Paper className={classes.paper}>
 					<h2 className="text-white font-imperator font-size text-uppercase">
-						Error
+						UH-OH
 					</h2>
 					<div className="line"></div>
 					<p className="p-t-b text-white font-circular">
-						Game is not possible without accesing phone sensors.
+						Looks Like your refusen to let us use so necessary components from
+						your mobile device. Lorem ipsum dolor sit amet.
 					</p>
 					<button className="permissionBtn mt-5" onClick={TryAgain}>
 						Try Again

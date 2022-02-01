@@ -216,63 +216,68 @@ const SysRequirementsStepView = ({
 	errorTestCallback,
 	// validations,
 }) => (
-	<div className={classes.bigContainer}>
-		<Paper className={classes.paper}>
-			<div className={classes.topInfo}>
-				<Container maxWidth="sm" disableGutters={true}>
-					<Typography
-						variant="subtitle1"
-						style={{
-							textTransform: "upperCase",
-							fontWeight: "bold",
-							color: "#fff",
-							fontSize: "1.5rem",
-							fontFamily: "Imperator",
-						}}
-						gutterBottom
-					>
-						Testing Your <br /> Device
-					</Typography>
-					<div className="line"></div>
-					{state === TEST_STATES.PROMPT && (
-						<PromptView classes={classes} onClickCallback={startTestCallback} />
-					)}
-					{state === TEST_STATES.RUNNING && (
-						<RunningView
-							classes={classes}
-							os={os}
-							version={version}
-							browserName={browserName}
-							browserVersion={browserVersion}
-							speedTestData={speedTestData}
-						/>
-					)}
-					{state === TEST_STATES.DONE && recommendations.length > 0 && (
-						<div className={classes.middleInfo}>
-							<img src={positive} alt="" className="img-testing" />
-						</div>
-					)}{" "}
-				</Container>
-				{state === TEST_STATES.ERROR && errorTestCallback && (
-					<div>
-						<h2 className="text-white font-imperator font-size">
-							YOUR DEVICE IS <br /> NOT POWERFUL <br /> ENOUGH
-						</h2>
+	<div className="step-bg">
+		<div className={classes.bigContainer}>
+			<Paper className={classes.paper}>
+				<div className={classes.topInfo}>
+					<Container maxWidth="sm" disableGutters={true}>
+						<Typography
+							variant="subtitle1"
+							style={{
+								textTransform: "upperCase",
+								fontWeight: "bold",
+								color: "#fff",
+								fontSize: "1.5rem",
+								fontFamily: "Imperator",
+							}}
+							gutterBottom
+						>
+							Testing Your <br /> Device
+						</Typography>
 						<div className="line"></div>
-						<p className="p-t-b text-white font-circular">
-							Unfortunately, your device is not powerful enough to sustain a
-							breach. You can still learn more about the Monster World, but you
-							will have to use a newer device to live this experience.
-						</p>
-						<Link to="/walkthrough">
-							<button className="btn-home-1 font-circular mb-30">
-								START THE EXPERIENCE
-							</button>
-						</Link>
-					</div>
-				)}
-			</div>
-		</Paper>
+						{state === TEST_STATES.PROMPT && (
+							<PromptView
+								classes={classes}
+								onClickCallback={startTestCallback}
+							/>
+						)}
+						{state === TEST_STATES.RUNNING && (
+							<RunningView
+								classes={classes}
+								os={os}
+								version={version}
+								browserName={browserName}
+								browserVersion={browserVersion}
+								speedTestData={speedTestData}
+							/>
+						)}
+						{state === TEST_STATES.DONE && recommendations.length > 0 && (
+							<div className={classes.middleInfo}>
+								<img src={positive} alt="" className="img-testing" />
+							</div>
+						)}{" "}
+					</Container>
+					{state === TEST_STATES.ERROR && errorTestCallback && (
+						<div>
+							<h2 className="text-white font-imperator font-size">
+								YOUR DEVICE IS <br /> NOT POWERFUL <br /> ENOUGH
+							</h2>
+							<div className="line"></div>
+							<p className="p-t-b text-white font-circular">
+								Unfortunately, your device is not powerful enough to sustain a
+								breach. You can still learn more about the Monster World, but
+								you will have to use a newer device to live this experience.
+							</p>
+							<Link to="/walkthrough">
+								<button className="btn-home-1 font-circular mb-30">
+									START THE EXPERIENCE
+								</button>
+							</Link>
+						</div>
+					)}
+				</div>
+			</Paper>
+		</div>
 	</div>
 );
 

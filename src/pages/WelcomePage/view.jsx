@@ -39,7 +39,10 @@ const WelcomePageView = ({
 							>
 								<h2 className="home-text">THE SECRET LIFE OF MONSTERS</h2>
 								<div className="line"></div>
-								<p className="font-circular" style={{ padding: "10px" }}>
+								<p
+									className="font-circular"
+									style={{ padding: "10px", fontSize: "1.1rem" }}
+								>
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 								</p>

@@ -159,7 +159,8 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
 }
 .background-images {
   max-width: 480px;
-  background: url(../src/images/Bitmap.png);
+  /* background: url(../src/images/Bitmap.png); */
+  background: url(../src/images/Glitched.jpg);
   min-height: 100vh;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -214,7 +215,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
 }
 @media (max-width:767px) {
   .top-images{
-    display: none;
+    width: 80%;
   }
   .background-image {
 
@@ -280,6 +281,6 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
 }
 p.deivce-testing{
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   padding-top: 20px;
 }
