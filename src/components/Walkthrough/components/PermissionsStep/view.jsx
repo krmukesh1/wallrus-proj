@@ -34,12 +34,13 @@ const PermissionsStepView = ({
 					<div className={classes.topInfo}>
 						<div>
 							<h2 className="text-white font-imperator font-size text-uppercase">
-								Pedestal Setup
+								Using Your Device Sensors
 							</h2>
 							<div className="line"></div>
 							<p className="p-t-b text-white font-circular">
-								Please accept for this app to use the position sensors, as well
-								as the camera and mic.
+								In order to visit the Monstar World. we will be using multiple
+								sensors from your device. we need your Permission to do so. this
+								experiance cannot work without it.
 							</p>
 						</div>
 					</div>
