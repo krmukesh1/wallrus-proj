@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
+import { useLocation } from "react-router-dom";
 import {
 	DoneStep,
 	SysRequirementsStep,
@@ -35,6 +35,8 @@ const WalkthroughView = ({
 		console.log("Log", noButtonStatus);
 	}, [noButtonStatus]);
 	console.log("....................", activeStep);
+	const path = useLocation().pathname;
+	const location = path.split("/")[1];
 	return (
 		<>
 			<CssBaseline />
@@ -48,7 +50,7 @@ const WalkthroughView = ({
 						className={classes.grid}
 					>
 						<Grid item xs={12}>
-							<div className="background-images">
+							<div className={`background-images ${location}${activeStep}`}>
 								<div className={classes.stepContainer}>
 									<div className={classes.bigContainer}></div>
 									{activeStep === 0 && (

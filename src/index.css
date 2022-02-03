@@ -171,6 +171,12 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.InfoBoxFullWidth-ac
   margin: auto;
   display: flex;
 }
+.background-images.walkthrough1 {
+  background: url(../src/images/unnamed.jpg);
+}
+.background-images.walkthrough3 {
+  background: url(../src/images/unnamed.jpg);
+}
 .background-images .MuiPaper-root {
   background: transparent !important;
   box-shadow: none !important;
