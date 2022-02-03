@@ -60,7 +60,7 @@ const styles = (theme) => ({
 		display: "flex",
 		justifyContent: "space-between",
 		alignItems: "center",
-		marginBottom: 42,
+		marginBottom: 2,
 	},
 	formControl: {
 		width: "100%",

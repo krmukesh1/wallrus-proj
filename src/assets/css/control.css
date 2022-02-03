@@ -59,7 +59,7 @@
 }
 .bg-home-3 {
 	text-align: center;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	background-size: cover;
 	display: flex;
 	justify-content: center;
