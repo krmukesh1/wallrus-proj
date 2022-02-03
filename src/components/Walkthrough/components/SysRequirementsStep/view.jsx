@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import netwrok from "../../../../assets/images/Network.png";
 import positive from "../../../../assets/images/positive-vote.png";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -66,7 +65,12 @@ SpeedTestDataView.propTypes = {
 const SpeedTestView = () => (
 	<>
 		<ListItemAvatar className="iconSize">
-			<img className="img-testing" src={netwrok} alt="network" />
+			<div className="wifi-symbol">
+				<div className="wifi-circle first"></div>
+				<div className="wifi-circle second"></div>
+				<div className="wifi-circle third"></div>
+				<div className="wifi-circle fourth"></div>
+			</div>
 			<p className="deivce-testing">Your Device is Testing Please Wait...</p>
 		</ListItemAvatar>
 	</>
